@@ -1,0 +1,41 @@
+name: Staging
+
+env:
+  STAGING_DOMAIN_URL: project-template-staging.vercel.app
+
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - 'v[0-9]+'
+    paths:
+      - 'frontend/**'
+
+jobs:
+  Deploy-Staging:
+    name: Deploy frontend staging
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 6.0.2
+      - uses: actions/checkout@v2
+      - run: pnpm install --global vercel@latest
+      - run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }} --scope pixel8labs
+      - run: vercel build --token=${{ secrets.VERCEL_TOKEN }} --scope pixel8labs
+      - name: Deploy
+        id: vercel-deploy
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --scope pixel8labs
+        continue-on-error: false
+      - run: |
+          echo "URL=$(curl -X GET \
+          'https://api.vercel.com/v6/deployments?projectId=${{ secrets.VERCEL_PROJECT_ID }}&teamId=${{ secrets.VERCEL_ORG_ID }}&limit=1' \
+          -H 'Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}' \
+          -H 'Content-Type: application/json' \
+          | jq -r '.deployments[0].url')" \
+          >> $GITHUB_ENV
+      - name: Set alias
+        id: set-alias
+        run: vercel alias set ${{ env.URL }} ${{ env.STAGING_DOMAIN_URL }} --token=${{ secrets.VERCEL_TOKEN }} --scope pixel8labs
+        if: steps.vercel-deploy.outcome == 'success'

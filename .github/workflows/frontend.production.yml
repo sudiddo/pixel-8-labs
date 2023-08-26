@@ -1,0 +1,22 @@
+name: Production
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+'
+    paths:
+      - 'frontend/**'
+
+jobs:
+  Deploy-Production:
+    name: Deploy frontend production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 6.0.2
+      - uses: actions/checkout@v2
+      - run: pnpm install --global vercel@latest
+      - run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --scope pixel8labs
+      - run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --scope pixel8labs
+      - run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --scope pixel8labs
