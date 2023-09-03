@@ -1,4 +1,4 @@
-# Pixel8Labs Front-end Engineer Take-home Test
+# Pixel8Labs Full-stack Engineer Take-home Test
 
 Thanks for your interest in working with us as a fullstack engineer.
 This take-home test is for us to gauge your engineering capabilities and determine
