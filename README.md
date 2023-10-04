@@ -1,15 +1,9 @@
-# Pixel8Labs Full-stack Engineer Take-home Test
+# Pixel8Labs Product Developer Take-home Test
 
-Thanks for your interest in working with us as a fullstack engineer.
-This take-home test is for us to gauge your engineering capabilities and determine
-whether we can move to the work trial phase. It's not a test per se but rather a
-way for Pixel8Labs to know more about your abilities and also for you to see if
-you would like the kind of work we do, before we spend more time together in the
-work trial.
+Thanks for your interest in working with us as a product developer.
+This take-home test is for us to gauge your engineering capabilities and determine whether we can move to the work trial phase. It's not a test per se but rather a way for Pixel8Labs to know more about your abilities and also for you to see if you would like the kind of work we do, before we spend more time together in the work trial.
 
-This test should not take you more than 20-25 hours but you are allowed to spend more
-than 20-25 hours within the given 3 days just in case you want to touch things up and
-submit a polished piece of work.
+This test should not take you more than a few hours but you are allowed to spend more within the given 3 days just in case you want to touch things up and submit a polished piece of work.
 
 ## Tasks
 
@@ -35,7 +29,7 @@ The frontend design for this app can be found in [this Figma file](https://www.f
 
 **Notes**:
 
-- Go usage is optional, you can clear the backend folder and start a new setup if you want to use a different language.
+- Go usage is optional, you can create your own backend implementation in the backend folder.
 - Frontend must be using React and the existing setup that we have in the [frontend](./frontend/) folder.
 - Tailwind usage is optional, please feel free to use any CSS libraries / frameworks.
 
@@ -43,8 +37,9 @@ The frontend design for this app can be found in [this Figma file](https://www.f
 
 These tasks are optional but we would encourage you to give them a try to demonstrate more of your skills
 
-- [ ] Setup Github Actions for lint check on PRs to `master`
-- [ ] Setup Github Actions to deploy on pushes to `master`
+- [ ] Setup Github Actions workflow file for lint check on PRs to `master`
+- [ ] Setup Github Actions workflow file to deploy on pushes to `master`
+- [ ] Deploy the website and submit the URL to us
 
 ## Tips
 
