@@ -13,12 +13,7 @@ export type ProfileType = {
 
 interface Props extends ProfileType {}
 
-function Profile({
-  recentProfileViews,
-  repos,
-  totalProfileViews,
-  user,
-}: Props) {
+function Profile({ user }: Props) {
   return (
     <div>
       <Header user={user} />
