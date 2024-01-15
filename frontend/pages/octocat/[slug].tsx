@@ -1,11 +1,15 @@
-import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react';
-import { fetchEvents, fetchRepos, fetchUserProfile } from '../api';
 import Profile, { ProfileType } from '@/components/screens/Profile';
 import { UserType } from '@/types/userType';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { fetchUserProfile, fetchRepos, fetchEvents } from '../api';
 import Spinner from '@/components/shared/Spinner';
 
-function Octocat() {
+function UserPage() {
+  const router = useRouter();
+  const slug = String(router.query.slug);
+
   const { data: session } = useSession({ required: true });
   const [profile, setProfile] = useState<ProfileType>({
     recentProfileViews: [],
@@ -17,11 +21,11 @@ function Octocat() {
   useEffect(() => {
     if (session && session.user) {
       const loadData = async () => {
-        const userProfile = await fetchUserProfile({ session });
+        const userProfile = await fetchUserProfile({ session, slug });
 
-        const repos = await fetchRepos({ session });
+        const repos = await fetchRepos({ session, slug });
 
-        const events = await fetchEvents({ session });
+        const events = await fetchEvents({ session, slug });
 
         const watchEvents = events.filter(
           (event) => event.type === 'WatchEvent',
@@ -40,7 +44,7 @@ function Octocat() {
 
       loadData();
     }
-  }, [session]);
+  }, [session, slug]);
 
   if (session && session.user && profile.user.id) {
     return <Profile {...profile} />;
@@ -48,4 +52,4 @@ function Octocat() {
   return <Spinner />;
 }
 
-export default Octocat;
+export default UserPage;

@@ -2,6 +2,7 @@ import { UserType } from '@/types/userType';
 import { Disclosure } from '@headlessui/react';
 import { signOut } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { defaultAvatar } from 'utility/common';
 
@@ -32,11 +33,10 @@ function MobileHeader({ user }: Props) {
         </div>
         <div className="mt-6">
           <Disclosure.Button
-            as="a"
-            href="#"
+            as="div"
             className="block rounded-md py-3 text-base font-medium text-gray-900 px-4"
           >
-            View Profile
+            <Link href="/octocat">View Profile</Link>
           </Disclosure.Button>
           <div className="bg-gray-100 h-px w-full my-2" />
           <Disclosure.Button

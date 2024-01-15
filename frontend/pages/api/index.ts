@@ -11,9 +11,20 @@ import { Octokit } from 'octokit';
  * @returns The response data from the GitHub API request
  */
 
-async function api(url: string, session: Session) {
+type ApiParams = {
+  url: string;
+  session: Session;
+  slug?: string;
+};
+
+type FetcherParams = {
+  session: Session;
+  slug?: string;
+};
+
+async function api({ url, session, slug }: ApiParams) {
   try {
-    const name = session.user?.name?.toLowerCase();
+    const name = slug ?? session.user?.name?.toLowerCase();
     const octokit = new Octokit({
       auth: session.user.accessToken,
     });
@@ -35,14 +46,20 @@ async function api(url: string, session: Session) {
   }
 }
 
-export async function fetchUserProfile(session: Session): Promise<UserType> {
-  return api('', session);
+export async function fetchUserProfile({
+  session,
+  slug,
+}: FetcherParams): Promise<UserType> {
+  return api({ url: '', session, slug });
 }
 
-export async function fetchRepos(session: Session) {
-  return api('/repos', session);
+export async function fetchRepos({ session, slug }: FetcherParams) {
+  return api({ url: '/repos', session, slug });
 }
 
-export async function fetchEvents(session: Session): Promise<EventType[]> {
-  return api('/received_events', session);
+export async function fetchEvents({
+  session,
+  slug,
+}: FetcherParams): Promise<EventType[]> {
+  return api({ url: '/received_events', session, slug });
 }

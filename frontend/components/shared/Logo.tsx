@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 function Logo() {
   return (
-    <div className="flex flex-row space-x-2 items-center">
+    <Link href="/octocat" className="flex flex-row space-x-2 px-4 items-center">
       <Image
         src="/logo.png"
         alt="logo"
@@ -17,7 +18,7 @@ function Logo() {
           GitHub Profile Previewer
         </h2>
       </div>
-    </div>
+    </Link>
   );
 }
 
