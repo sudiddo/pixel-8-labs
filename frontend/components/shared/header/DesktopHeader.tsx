@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React, { Fragment } from 'react';
 import { classNames, defaultAvatar } from 'utility/common';
 import Logo from '../Logo';
+import Link from 'next/link';
 
 type Props = {
   user: UserType;
@@ -69,15 +70,15 @@ function DesktopHeader({ user, open }: Props) {
                   </div>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <Link
+                        href="/octocat"
                         className={classNames(
                           active ? 'bg-gray-100' : '',
                           'block px-4 py-[10px] text-sm text-gray-700',
                         )}
                       >
                         View Profile
-                      </a>
+                      </Link>
                     )}
                   </Menu.Item>
                   <div className="bg-gray-100 h-[3px] w-full" />
