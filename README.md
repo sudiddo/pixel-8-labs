@@ -19,11 +19,11 @@ Implement and deploy (to the platform provider of your choice) an application th
   - [ ] Email if it's available
   - [ ] Numbers of followers and following
 - [ ] Show the first 6 (or less if there're less repositories from such user) repositories of such user
-- [ ] The default home page will redirect to `/octocat`
-- [ ] Users can login using their github account using Oauth
+- [x] The default home page will redirect to `/octocat`
+- [x] Users can login using their github account using Oauth
 - [ ] Show details about profile views:
   - [ ] The total number of views a profile have gotten (regardless whether the view was from an authenticated user or not)
-  - [ ] The last 3 people who view a particular profile (link to those profiles on the same app as well)
+  - [x] The last 3 people who view a particular profile (link to those profiles on the same app as well)
 
 The frontend design for this app can be found in [this Figma file](https://www.figma.com/file/fLiLQfjSF6X7pEfHli2Lwh/Fullstack-Engineer-Test-Case?type=design&node-id=0%3A1&mode=design&t=RfULQB2MF956TxTT-1)
 
@@ -37,9 +37,9 @@ The frontend design for this app can be found in [this Figma file](https://www.f
 
 These tasks are optional but we would encourage you to give them a try to demonstrate more of your skills
 
-- [ ] Setup Github Actions workflow file for lint check on PRs to `master`
-- [ ] Setup Github Actions workflow file to deploy on pushes to `master`
-- [ ] Deploy the website and submit the URL to us
+- [x] Setup Github Actions workflow file for lint check on PRs to `master`
+- [x] Setup Github Actions workflow file to deploy on pushes to `master`
+- [x] Deploy the website and submit the URL to us
 
 ## Tips
 
